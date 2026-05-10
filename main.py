@@ -1,12 +1,4 @@
-import pygame
+from Code.Game import Game
 
-pygame.init()
-window = pygame.display.set_mode(size =(600, 400))
-print('Setup End')
-
-print('Loop Start')
-while True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            quit()
+game = Game()
+game.run()
