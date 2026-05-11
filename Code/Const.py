@@ -13,22 +13,22 @@ EVENT_ENEMY = pygame.USEREVENT + 1
 EVENT_TIMEOUT = pygame.USEREVENT + 2
 ENTITY_SPEED = { #Velocidade de movimento das entidades
     'Friend': 4,
-    'Player': 30,
-    'Enemy': 1,
+    'Player': 3,
+    'Gota': 5,
 }
 
 ENTITY_HEALTH = { #HP das entidades
     'LevelBackground': 999,
     'Friend': 999,
     'Player': 3,
-    'Enemy': 1,
+    'Gota': 1,
 }
 
 ENTITY_DAMAGE = { #Dano
     'LevelBackground': 0,
     'Friend': 0,
     'Player': 1,
-    'Enemy': 1,
+    'Gota': 1,
 }
 
 # M
@@ -40,7 +40,7 @@ PLAYER_KEY_LEFT = {'Player': pygame.K_LEFT} #Controles
 PLAYER_KEY_RIGHT = {'Player': pygame.K_RIGHT}
 
 # S
-SPAWN_TIME = 4000
+SPAWN_TIME = 1000
 
 # T
 TIMEOUT_STEP = 100 #100ms

@@ -1,9 +1,11 @@
 import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
-from Code.Const import C_WHITE, WIN_HEIGHT, C_YELLOW3
+from Code.Const import C_WHITE, WIN_HEIGHT, C_YELLOW3, EVENT_ENEMY, EVENT_TIMEOUT, C_YELLOW
 from Code.Entity import Entity
 from Code.EntityFactory import EntityFactory
+from Code.EntityMediator import EntityMediator
+from Code.Player import Player
 
 
 class Level:
@@ -15,7 +17,8 @@ class Level:
         self.entity_list.append(EntityFactory.get_entity('Player')) # coloca o jogador
         self.timeout = 10000  # 30 segundos
         self.EVENT_TIMEOUT = pygame.USEREVENT + 1
-        pygame.time.set_timer(self.EVENT_TIMEOUT, 100) #100ms
+        pygame.time.set_timer(EVENT_TIMEOUT, 100)  # parte do timer
+        pygame.time.set_timer(EVENT_ENEMY, 500)  # spawna gotas
 
     def run(self):
         pygame.mixer_music.load('./Asset/Level2 (Level Music).mp3') # Musica
@@ -28,12 +31,25 @@ class Level:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     quit()
-                elif event.type == self.EVENT_TIMEOUT: #limite de tempo
+                elif event.type == EVENT_ENEMY:
+                    self.entity_list.append(EntityFactory.get_entity('Gota'))
+                elif event.type == EVENT_TIMEOUT:
                     self.timeout -= 100
                     if self.timeout <= 0:
-                        return  # VOLTA PRO MENU, MEDIDA PROVISÓRIA
+                        return
+
+            found_player = False  # verifica se o player esta vivo
+            for ent in self.entity_list:
+                if isinstance(ent, Player):
+                    found_player = True
+
+            if not found_player:  # se o player morrer, volta pro menu principal
+                return False
 
             for ent in self.entity_list: #pega as imagens necessárias
+                ent.move()
+                if ent.name == 'Player':
+                    self.level_text(30, f'HP: {ent.health}', C_YELLOW, (10, WIN_HEIGHT - 60))
                 self.window.blit(ent.surf, ent.rect)
             time_left = self.timeout / 1000 #segundos
             if time_left <= 5: # alterna a cor nos ultimos 5s
@@ -49,7 +65,8 @@ class Level:
             self.level_text(14, f'entidades: {len(self.entity_list)}', (255, 255, 255), (10, WIN_HEIGHT - 20))
             pygame.display.flip() #Nos textos acima timeout mostra a duração da fase, fps coloca o fps na tela, entidades mostra entidades
             #ENTIDADES_TEXT É APENAS PARA DEV TESTS, DESATIVAR ANTES DE PUBLICAR
-
+            EntityMediator.verify_collision(entity_list=self.entity_list)  # verificação de colisão
+            EntityMediator.verify_health(entity_list=self.entity_list)
 
     def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
         text_font: Font = pygame.font.SysFont(name="Lucida Sans Typewriter", size=text_size)

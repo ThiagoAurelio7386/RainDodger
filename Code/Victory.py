@@ -8,7 +8,7 @@ from Code.Const import WIN_WIDTH, MENU_OPTION, C_WHITE, C_YELLOW, C_YELLOW2
 class Menu:
     def __init__(self, window):
         self.window = window
-        self.surf = pygame.image.load('./Asset/Menu.png').convert_alpha()
+        self.surf = pygame.image.load('./Asset/VictoryScreen.png').convert_alpha()
         self.rect = self.surf.get_rect(left=0, top=0)
 
     def run(self):
@@ -18,9 +18,7 @@ class Menu:
         while True:
             # DRAW IMAGES
             self.window.blit(source=self.surf, dest=self.rect)
-            self.menu_text(50, "Rain Dodger", C_YELLOW2, ((WIN_WIDTH / 2), 70))
-            self.menu_text(30, "Use as setas para jogar", C_WHITE, ((WIN_WIDTH / 2), 300 + 25 * 2))
-            #TESTE self.menu_text(30, "Desvie das gotas", C_WHITE, ((WIN_WIDTH / 2), 300 + 50 * 2))
+            self.menu_text(50, "YOU WON!!!", C_YELLOW2, ((WIN_WIDTH / 2), 70))
 
             for i in range(len(MENU_OPTION)):
                 if i == menu_option:
