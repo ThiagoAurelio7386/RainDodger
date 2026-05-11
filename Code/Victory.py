@@ -18,7 +18,7 @@ class Victory:
         while True:
             # DRAW IMAGES
             self.window.blit(source=self.surf, dest=self.rect)
-            self.menu_text(50, "YOU WON!!!", C_YELLOW2, ((WIN_WIDTH / 2), 70))
+            self.menu_text(50, "YOU WIN!!!", C_YELLOW2, ((WIN_WIDTH / 2), 70))
             pygame.display.flip()
 
             # Check for all events

@@ -11,6 +11,7 @@ C_YELLOW3 = (255, 255, 0)
 # E
 EVENT_ENEMY = pygame.USEREVENT + 1
 EVENT_TIMEOUT = pygame.USEREVENT + 2
+EVENT_FRIEND = pygame.USEREVENT + 3
 ENTITY_SPEED = { #Velocidade de movimento das entidades
     'Friend': 4,
     'Player': 3,

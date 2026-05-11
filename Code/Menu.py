@@ -20,7 +20,7 @@ class Menu:
             self.window.blit(source=self.surf, dest=self.rect)
             self.menu_text(50, "Rain Dodger", C_YELLOW2, ((WIN_WIDTH / 2), 70))
             self.menu_text(30, "Use as setas para jogar", C_WHITE, ((WIN_WIDTH / 2), 300 + 25 * 2))
-            #TESTE self.menu_text(30, "Desvie das gotas", C_WHITE, ((WIN_WIDTH / 2), 300 + 50 * 2))
+            self.menu_text(30, "Desvie das gotas até seu amigo chegar", C_WHITE, ((WIN_WIDTH / 2), 300 + 50 * 2))
 
             for i in range(len(MENU_OPTION)):
                 if i == menu_option:
