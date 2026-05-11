@@ -2,7 +2,6 @@ import random
 
 from Code.Background import Background
 from Code.Const import WIN_WIDTH, WIN_HEIGHT
-#from Code.Enemy import Enemy
 from Code.Player import Player
 
 
@@ -17,8 +16,8 @@ class EntityFactory:
                     list_bg.append(Background(f'LevelBackground', (0, 0)))
                     # list_bg.append(Background(f'LevelBackground{i}')) #GENERICA, USE APENAS SE ACIMA NÃO FUNCIONAR
                 return list_bg
-            #case 'Player':
-                #return Player('Player', (10, WIN_HEIGHT / 2 - 30)) #define posição do player, neste projeto esta no meio do canto esquerdo
+            case 'Player':
+                return Player('Player', (215, WIN_HEIGHT / 1.4 - 8)) #define posição do player, centrado
         #    case 'Player2':
          #       return Player('Player2', (10, WIN_HEIGHT / 2 + 30))  # define posição do player, neste projeto esta no meio do canto esquerdo
            # case 'Enemy':

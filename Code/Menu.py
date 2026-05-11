@@ -2,7 +2,7 @@ import pygame.image
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from Code.Const import WIN_WIDTH, MENU_OPTION, C_WHITE, C_YELLOW
+from Code.Const import WIN_WIDTH, MENU_OPTION, C_WHITE, C_YELLOW, C_YELLOW2
 
 
 class Menu:
@@ -18,7 +18,9 @@ class Menu:
         while True:
             # DRAW IMAGES
             self.window.blit(source=self.surf, dest=self.rect)
-            self.menu_text(50, "Rain Dodger", C_YELLOW, ((WIN_WIDTH / 2), 70))
+            self.menu_text(50, "Rain Dodger", C_YELLOW2, ((WIN_WIDTH / 2), 70))
+            self.menu_text(30, "Use as setas para jogar", C_WHITE, ((WIN_WIDTH / 2), 300 + 25 * 2))
+            #TESTE self.menu_text(30, "Desvie das gotas", C_WHITE, ((WIN_WIDTH / 2), 300 + 50 * 2))
 
             for i in range(len(MENU_OPTION)):
                 if i == menu_option:
@@ -36,13 +38,11 @@ class Menu:
                     if event.key == pygame.K_DOWN:  # Faz menu descer quando a seta "\/" é pressionada
                         if menu_option < len(MENU_OPTION) - 1:
                             menu_option += 1
-                        else:
-                            menu_option = 0
+
                     if event.key == pygame.K_UP:  #Faz menu subir quando a tecla "^" é pressionada
                         if menu_option > 0:
                             menu_option -= 1
-                        else:
-                            menu_option = len(MENU_OPTION) - 1
+
                     if event.key == pygame.K_RETURN:  # ENTER
                         return MENU_OPTION[menu_option]
 
