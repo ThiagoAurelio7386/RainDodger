@@ -3,6 +3,7 @@ import pygame
 from Code.Const import MENU_OPTION, WIN_WIDTH, WIN_HEIGHT
 from Code.Level import Level
 from Code.Menu import Menu
+from Code.Victory import Victory
 
 
 class Game:
@@ -15,13 +16,17 @@ class Game:
     def run(self):
         print('Starting...')
         while True:
+            victory = Victory(self.window)
             menu = Menu(self.window)  # abre mini-janela com o jogo
             menu_return = menu.run()
 
             if menu_return in [MENU_OPTION[0]]:
                 level = Level(self.window, 'Level', menu_return)
                 level_return = level.run()
-               # if level_return: Level(self.window, 'Victory', menu_return)
+                if level_return is None:  # tempo acabou
+                    victory = Victory(self.window)
+                    victory.show_victory()
+
             elif menu_return == MENU_OPTION[1]:
                 pygame.quit()  # fecha janela (sai do jogo)
                 print('Quitting...')
