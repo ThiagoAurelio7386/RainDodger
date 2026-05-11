@@ -20,6 +20,6 @@ class EntityFactory:
             case 'Player':
                 return Player('Player', (215, WIN_HEIGHT / 1.4 - 8)) #define posição do player, centrado
             case 'Friend':
-                return Friend('Friend', (500, WIN_HEIGHT / 1.4 - 8))  # define posição do player, centrado
+                return Friend('Friend', (500, WIN_HEIGHT / 1.4 - 8))  # define posição do amigo, centrado
             case 'Gota':
                 return Gota('Gota', (random.randint(20, WIN_WIDTH - 40), -10))
