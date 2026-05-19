@@ -17,7 +17,7 @@ class Victory:
         pygame.mixer_music.play(-1)
         while True:
             # DRAW IMAGES
-            self.window.blit(source=self.surf, dest=self.rect)
+            self.window.blit(source=self.surf, dest=self.rect) #texto da tela de vitória
             self.menu_text(50, "YOU WIN!!!", C_YELLOW2, ((WIN_WIDTH / 2), 70))
             pygame.display.flip()
 
