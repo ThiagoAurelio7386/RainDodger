@@ -33,8 +33,13 @@ ENTITY_DAMAGE = { #Dano
 }
 
 # M
-MENU_OPTION = ('START GAME', #Opções
+MENU_OPTION = ('START GAME', #Opções do menu principal
                'EXIT')
+
+MENU_OPTION2 = ('PLAY AGAIN', #Opções da tela de vitória
+                'MAIN MENU',
+               'EXIT')
+
 
 #P
 PLAYER_KEY_LEFT = {'Player': pygame.K_LEFT} #Controles
@@ -46,6 +51,7 @@ SPAWN_TIME = 1000
 # T
 TIMEOUT_STEP = 100 #100ms
 TIMEOUT_LEVEL = 20000 #20s #20000
+
 
 # W
 WIN_WIDTH = 500

@@ -15,7 +15,7 @@ class Level:
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity('LevelBackground'))  # fundo
         self.entity_list.append(EntityFactory.get_entity('Player'))           # jogador
-        self.timeout = 30000  # jogo dura 30 segundos
+        self.timeout = 3000  # jogo dura 30 segundos (30000)
 
         # timers
         pygame.time.set_timer(EVENT_TIMEOUT, 100)   # decrementa tempo
